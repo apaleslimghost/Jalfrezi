@@ -1,0 +1,32 @@
+{
+  "name": "jalfrezi",
+  "version": "1.0.0",
+  "description": "curried default options",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -u exports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quarterto/Jalfrezi.git"
+  },
+  "keywords": [
+    "curry"
+  ],
+  "author": "Matt Brennan <matt@153.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/quarterto/Jalfrezi/issues"
+  },
+  "homepage": "https://github.com/quarterto/Jalfrezi",
+  "dependencies": {
+    "curry": "^1.2.0",
+    "defaults": "^1.0.0"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2",
+    "sinon-expect": "^0.2.0"
+  }
+}
