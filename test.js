@@ -5,7 +5,7 @@ exports.Jalfrezi = {
 	defaults: {
 		'not giving anything': function() {
 			var o;
-			var g = function(o2) {
+			var g = function g(o2) {
 				o = o2;
 			};
 			var f = jalfrezi({
@@ -14,7 +14,7 @@ exports.Jalfrezi = {
 				c: 3
 			}, g);
 
-			f({});
+			f.g_({});
 
 			expect(o).to.eql({
 				a: 1,
@@ -25,7 +25,7 @@ exports.Jalfrezi = {
 
 		'filling stuff in': function() {
 			var o;
-			var g = function(o2) {
+			var g = function g(o2) {
 				o = o2;
 			};
 			var f = jalfrezi({
@@ -34,7 +34,7 @@ exports.Jalfrezi = {
 				c: 3
 			}, g);
 
-			f({
+			f.g_({
 				b: 'b',
 				c: 'c',
 				d: 5
@@ -59,10 +59,9 @@ exports.Jalfrezi = {
 		};
 
 		var f = jalfrezi({}, g);
-		var f_ = f({});
-		var f__ = f_(1);
-		var f___ = f__(2);
-		f___(3);
+		var f_ = f(1);
+		var f__ = f_(2);
+		f__(3);
 
 		expect([o, a, b, c]).to.eql([
 			{}, 1, 2, 3

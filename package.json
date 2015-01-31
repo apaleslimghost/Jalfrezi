@@ -21,7 +21,8 @@
   "homepage": "https://github.com/quarterto/Jalfrezi",
   "dependencies": {
     "curry": "^1.2.0",
-    "defaults": "^1.0.0"
+    "defaults": "^1.0.0",
+    "pascal-case": "^1.1.0"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
