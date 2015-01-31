@@ -3,8 +3,15 @@ var curry      = require('curry');
 var pascalCase = require('pascal-case');
 
 module.exports = function(def, fn) {
+	function notInDef(k) {
+		return Object.keys(def).indexOf(k) === -1;
+	}
+
 	var base = curry.to(fn.length, function(options) {
 		var args = [].slice.call(arguments, 1);
+		var unex = Object.keys(options).filter(notInDef);
+
+		if(unex.length) throw new TypeError('Unexpected option' + (unex.length > 1 ? 's ' : ' ') + unex.join(', '));
 		return fn.apply(this, [defaults(options, def)].concat(args));
 	});
 

@@ -127,15 +127,26 @@ exports.Jalfrezi = {
 			f.g_({
 				b: 'b',
 				c: 'c',
-				d: 5
 			});
 
 			expect(o).to.eql({
 				a: 1,
 				b: 'b',
-				c: 'c',
-				d: 5
+				c: 'c'
 			});
+		},
+
+		'unexpected parameters': function() {
+			var g = function g(o) {};
+			var f = jalfrezi({
+				a: 1,
+				b: 2,
+				c: 3
+			}, g);
+
+			expect(function() {
+				f.g_({d: 4});
+			}).to.throwException(/Unexpected option d/);
 		}
 	},
 
