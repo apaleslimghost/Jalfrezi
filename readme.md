@@ -4,8 +4,8 @@
 	<a href="http://badge.fury.io/js/jalfrezi">
 		<img src="https://badge.fury.io/js/jalfrezi.svg" alt="npm version">
 	</a>
-	<a href="https://travis-ci.org/quarterto/jalfrezi">
-		<img src="https://travis-ci.org/quarterto/jalfrezi.svg" alt="Build status">
+	<a href="https://travis-ci.org/quarterto/Jalfrezi">
+		<img src="https://travis-ci.org/quarterto/Jalfrezi.svg" alt="Build status">
 	</a>
 </h1>
 
