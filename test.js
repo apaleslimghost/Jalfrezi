@@ -2,6 +2,96 @@ var expect   = require('expect.js');
 var jalfrezi = require('./');
 
 exports.Jalfrezi = {
+	'base function': {
+		'calls with defaults': function() {
+			var o;
+			var g = function(o2) {
+				o = o2;
+			};
+			var f = jalfrezi({
+				a: 1,
+				b: 2,
+				c: 3
+			}, g);
+
+			f();
+
+			expect(o).to.eql({
+				a: 1,
+				b: 2,
+				c: 3
+			});
+		},
+
+		'keeps other args': function() {
+			var o, a, b, c;
+			var g = function(o2, a2, b2, c2) {
+				o = o2;
+				a = a2;
+				b = b2;
+				c = c2;
+			};
+			var f = jalfrezi({
+				a: 1,
+				b: 2,
+				c: 3
+			}, g);
+
+			f(1, 2, 3);
+
+			expect([a, b, c]).to.eql([1, 2, 3]);
+		}
+	},
+
+	with: {
+		'just the options': function() {
+			var o;
+			var g = function g(o2) {
+				o = o2;
+			};
+			var f = jalfrezi({
+				a: 1,
+				b: 2,
+				c: 3
+			}, g);
+
+			var h = f.withA('a');
+			h();
+
+			expect(o).to.eql({
+				a: 'a',
+				b: 2,
+				c: 3
+			});
+		},
+
+		'and other stuff': function() {
+			var o, a, b;
+			var g = function g(o2, a2, b2) {
+				o = o2;
+				a = a2;
+				b = b2;
+			};
+			var f = jalfrezi({
+				a: 1,
+				b: 2,
+				c: 3
+			}, g);
+
+			var h = f.withA('a');
+			h('a', 'b');
+
+			expect(o).to.eql({
+				a: 'a',
+				b: 2,
+				c: 3
+			});
+
+			expect(a).to.be('a');
+			expect(b).to.be('b');
+		}
+	},
+
 	defaults: {
 		'not giving anything': function() {
 			var o;

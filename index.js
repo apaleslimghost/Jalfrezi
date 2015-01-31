@@ -11,15 +11,21 @@ module.exports = function(def, fn) {
 	var out = base.bind(null, {});
 	out[fn.name + '_'] = base;
 
-	var withFn = curry.to(fn.length + 1, function withFn_(opt, fn) {
+	var withArg = curry.to(fn.length + 1, function withArg_(opt, arg) {
 		var args = [].slice.call(arguments, 2);
 		var opts = {};
-		opts[opt] = fn;
+		opts[opt] = arg;
 		return base.apply(this, [opts].concat(args));
 	});
 
+	var withArg1 = curry(function withArg1_(opt, arg) {
+		return function() {
+			return withArg(opt, arg);
+		};
+	});
+
 	for(var opt in def) {
-		out['with' + pascalCase(opt)] = withFn(opt);
+		out['with' + pascalCase(opt)] = fn.length === 1 ? withArg1(opt) : withArg(opt);
 	}
 
 	return out;
