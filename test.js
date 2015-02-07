@@ -167,5 +167,12 @@ exports.Jalfrezi = {
 		expect([o, a, b, c]).to.eql([
 			{}, 1, 2, 3
 		]);
+	},
+
+	displayName: function() {
+		var f = function() {};
+		f.displayName = 'foo';
+		var g = jalfrezi({}, f);
+		expect(g.foo_).to.be.a(Function);
 	}
 };

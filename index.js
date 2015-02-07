@@ -7,6 +7,8 @@ module.exports = function(def, fn) {
 		return Object.keys(def).indexOf(k) === -1;
 	}
 
+	var name = fn.displayName || fn.name;
+
 	var base = curry.to(fn.length, function(options) {
 		var args = [].slice.call(arguments, 1);
 		var unex = Object.keys(options).filter(notInDef);
@@ -16,7 +18,7 @@ module.exports = function(def, fn) {
 	});
 
 	var out = base.bind(null, {});
-	out[fn.name + '_'] = base;
+	out[name + '_'] = base;
 
 	var withArg = curry.to(fn.length + 1, function withArg_(opt, arg) {
 		var args = [].slice.call(arguments, 2);
