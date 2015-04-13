@@ -174,5 +174,22 @@ exports.Jalfrezi = {
 		f.displayName = 'foo';
 		var g = jalfrezi({}, f);
 		expect(g.foo_).to.be.a(Function);
+	},
+
+	applyN: {
+		'keeps options and applies nth': function() {
+			var o, a, b;
+			function f(o1, a1, b1) {
+				o = o1; a = a1; b = b1;
+			}
+
+			var g = jalfrezi({a: 5}, f);
+			var h = g.applyN(0, 6);
+			h(7);
+
+			expect(o).to.eql({a: 5});
+			expect(a).to.be(6);
+			expect(b).to.be(7);
+		}
 	}
 };
